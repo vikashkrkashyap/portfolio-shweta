@@ -1,0 +1,264 @@
+/**
+    @author :: Vikash kashyap <vikashkrkashyap@gmail.com>
+    @date :: 30 July 2017
+ */
+body
+{
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.align-center {
+    margin-right:auto;
+    margin-left:auto;
+}
+.navbar-default{
+    background: white;
+}
+
+.navbar{
+    position: fixed;
+    margin-bottom: 0!important;
+    width: 100%;
+    z-index: 999;
+}
+.navbar-default .navbar-nav>li>a{
+    color: #7A7BA6;
+    font-size: 17px;
+    font-weight: 500;
+    transition: color 0.4s ease 0s;
+    cursor: pointer;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: rgba(84,191,157,1)
+}
+
+.category-container{
+    height:810px;
+    width:100%;
+}
+
+.home{
+    position: relative;
+    top:20px;
+    background: url('../image/sa_cover.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay
+{
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+}
+
+
+.home-title{
+    background: transparent;
+    position: relative;
+    top:300px;
+    color:#FEFDFE;
+    font-size: 60px;
+    font-weight: 900;
+    text-align: center;
+    margin-left:30%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    z-index: 99;
+}
+.home-sub-title{
+    position: relative;
+    text-transform: uppercase;
+    top:10px;
+    font-weight: bold;
+    color: white;
+    font-size: 17px;
+}
+.home-sub-title .word{
+ margin:0 7px;
+}
+
+.home a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+.button-scroll{
+    position: relative;
+    border: 2px solid #FEFDFE;
+    background: transparent;
+    font-size: 15px;
+    padding: 4px 6px;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+
+}
+.button-scroll:focus{
+    outline: none;
+}
+
+.button-scroll:hover{
+    background:  rgba(84,191,157,1);
+    border-color: rgba(84,191,157,1);
+
+}
+
+.about-section{
+    background: #25383C;
+    height: 100%;
+    min-height: 750px;
+    color:white;
+}
+
+.section-title{
+    padding:50px 0 30px 0;
+    text-align: center;
+    color:white;
+}
+
+.section-title span{
+    position: relative;
+    font-size:50px;
+    padding-left: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section-title span:before
+{
+    position: absolute;
+    content: "";
+    width: 46%;
+    height: 5px;
+    left: 30%;
+    bottom: -15px;
+    background: whitesmoke;
+}
+
+.section-body{
+    margin-top:15px;
+    text-align: center;
+    min-height: 700px;
+    height: auto;
+}
+.section-body .sub-section-body
+{
+    font-family:sans-serif;
+    line-height: 35px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.gallery-section
+{
+    position: relative;
+    height: 100%;
+    background: #6a53b5;
+    /*background: url('../image/sa_gallery_2.jpg');*/
+    /*background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+.overlay-gallery
+{
+    background: rgba(0, 135, 0, 0.3);
+}
+
+.gallery-section .section-title span {
+    border-color: white;
+    z-index: 99;
+}
+
+.gallery-section .section-body
+{
+    text-align: center;
+}
+
+.gallery-sub-section {
+    border:2px solid whitesmoke;
+    height:500px;
+    margin-bottom: 15px;
+    z-index: 99;
+}
+
+.gallery {
+    overflow: hidden;
+}
+
+.gallery img {
+    height: 496px;
+    cursor: pointer;
+}
+
+.social-section{
+    background: #b55d9f;
+    height: 100%;
+    min-height: 800px;
+    color:white;
+}
+
+.section-title{
+    padding:50px 0 30px 0;
+    text-align: center;
+    color:white;
+}
+
+.social-sub-section{
+    border:2px solid whitesmoke;
+    height:550px;
+    margin-bottom: 15px;
+    z-index: 99;
+    color: white;
+}
+
+.social-sub-section .top-panel
+{
+    background: whitesmoke;
+    height:50px;
+    padding: 10px 0;
+    text-align: center;
+    color: dodgerblue;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.social-section .top-panel .logo img
+{
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+}
+
+.social-section .top-panel .text
+{
+    margin-left:5px;
+}
+
+.contact-section
+{
+    background: #5dad78;
+}
+.footer {
+    height:60px;
+    text-align: center;
+    background: #333;
+}
+
+.footer .text {
+    padding-top:20px;
+    color: white;
+}
+
+/** Media query  **/
+@media only screen and (max-width: 500px) {
+    .home {
+       background-position: 35% 20%;
+    }
+}
