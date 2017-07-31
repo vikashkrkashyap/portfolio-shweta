@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://fierce-reef-98461.herokuapp.com/'),
+    'url' => env('https://fierce-reef-98461.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
