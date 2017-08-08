@@ -452,6 +452,18 @@ body
     color: white;
 }
 
+.footer-link
+{
+    color:white;
+}
+
+.footer-link:hover
+{
+    text-decoration: none;
+    color:white;
+    border-bottom: 1px solid white;
+}
+
 /** Media query  **/
 @media only screen and (max-width: 500px) {
     .home {

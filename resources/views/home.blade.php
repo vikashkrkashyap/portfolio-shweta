@@ -253,7 +253,7 @@
 </div>
     <div class="footer">
         <div class="text">
-            &copy; Copyright 2017 | Shweta
+            Copyright  &copy; 2017 | Designed by <a href="https://www.linkedin.com/in/vikashkrkashyap/" class="footer-link">Vikash Kashyap</a>
         </div>
     </div>
 
