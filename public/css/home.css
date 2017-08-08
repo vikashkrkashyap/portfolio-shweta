@@ -4,7 +4,7 @@
  */
 body
 {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: 'Montserrat','Lato','Helvetica Nue','sans-serif';
 }
 
 .align-center {
@@ -31,6 +31,14 @@ body
 
 .navbar-default .navbar-nav>li>a:hover {
     color: rgba(84,191,157,1)
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand img {
+    height: 45px;
 }
 
 .category-container{
@@ -71,6 +79,7 @@ body
     text-transform: uppercase;
     letter-spacing: 3px;
     z-index: 99;
+    font-family: 'Montserrat','Lato','sans-serif';
 }
 .home-sub-title{
     position: relative;
@@ -93,7 +102,7 @@ body
     border: 2px solid #FEFDFE;
     background: transparent;
     font-size: 15px;
-    padding: 4px 6px;
+    padding: 7px 30px;
     transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
 
 }
@@ -108,9 +117,8 @@ body
 }
 
 .about-section{
-    background: #25383C;
-    height: 100%;
-    min-height: 750px;
+    background: #0D1116;
+    min-height: 600px;
     color:white;
 }
 
@@ -126,6 +134,8 @@ body
     padding-left: 12px;
     text-transform: uppercase;
     font-weight: bold;
+    font-family: 'Lato','Montserrat','Helvetica Neue';
+    letter-spacing: 2px;
 }
 
 .section-title span:before
@@ -140,7 +150,7 @@ body
 }
 
 .section-body{
-    margin-top:15px;
+    margin-top:35px;
     text-align: center;
     min-height: 700px;
     height: auto;
@@ -158,7 +168,7 @@ body
 {
     position: relative;
     height: 100%;
-    background: #6a53b5;
+    background: #0071BC;
     /*background: url('../image/sa_gallery_2.jpg');*/
     /*background-attachment: fixed;
     background-position: center;
@@ -181,10 +191,10 @@ body
 }
 
 .gallery-sub-section {
-    border:2px solid whitesmoke;
     height:500px;
     margin-bottom: 15px;
     z-index: 99;
+    box-shadow: 1px 1px 30px 7px rgba(0,0,0,0.15);
 }
 
 .gallery {
@@ -196,55 +206,241 @@ body
     cursor: pointer;
 }
 
-.social-section{
-    background: #b55d9f;
-    height: 100%;
-    min-height: 800px;
-    color:white;
-}
-
 .section-title{
-    padding:50px 0 30px 0;
+    padding:75px 40px 0;
     text-align: center;
     color:white;
-}
-
-.social-sub-section{
-    border:2px solid whitesmoke;
-    height:550px;
-    margin-bottom: 15px;
-    z-index: 99;
-    color: white;
-}
-
-.social-sub-section .top-panel
-{
-    background: whitesmoke;
-    height:50px;
-    padding: 10px 0;
-    text-align: center;
-    color: dodgerblue;
-    font-size: 20px;
-    font-weight: bold;
-    width: 100%;
-}
-
-.social-section .top-panel .logo img
-{
-    height: 32px;
-    width: 32px;
-    border-radius: 16px;
-}
-
-.social-section .top-panel .text
-{
-    margin-left:5px;
 }
 
 .contact-section
 {
-    background: #5dad78;
+    background: #E9E0D6;
+    min-height: 750px;
+    height: 100%;
 }
+
+.contact-section .section-title span:before
+{
+    background: black;
+}
+
+.contact-section .section-title{
+    color: black;
+}
+
+.contact-section .contact-wrapper
+{
+    margin-bottom: 15px;
+}
+
+.contact-row{
+    background: black;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 1);
+    height: 520px;
+
+}
+
+.contact-row .logo {
+    padding-top:50px;
+    text-align: center;
+}
+
+.contact-row .mid-text{
+    margin-top:25px;
+    font-size: 20px;
+    color:white;
+}
+
+.contact-row .footer{
+    background:black;
+    color:white;
+    font-size: 16px;
+    letter-spacing: 1.1px;
+    margin-top: 120px;
+}
+
+.contact-row .details-text
+{
+    text-align: left;
+    color:white;
+    padding-left: 25px;
+    padding-top: 70px;
+    letter-spacing: 1.1px;
+}
+
+.contact-row .details-text .title
+{
+    text-transform: uppercase;
+    font-size: 22px;
+}
+
+.contact-row .details-text .sub-title
+{
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.contact-row .social
+{
+    color:white;
+    text-align: center;
+    margin-top: 150px;
+
+}
+
+.contact-row .footer-logo{
+    margin-top: 70px;
+    text-align: right;
+}
+
+.contact-bottom-row{
+    bottom: 0;
+    height:0px;
+    background:white;
+}
+
+.contact-row .profile-link{
+    color:white;
+    display: inline;
+    margin-right:25px;
+}
+.contact-row .profile-link img{
+    height:50px;
+    border-radius: 24px;
+    border:2px solid white;
+}
+
+.contact-row .profile-link img.sayat
+{
+    border:none;
+}
+
+.review-section{
+    background: #f35f5f;
+    min-height: 750px;
+    height:100%;
+}
+
+.review-section .section-body , .review-section .sub-section-body
+{
+    letter-spacing: normal;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.review-section .review-book
+{
+    border: 1px solid #000;
+    height: 520px;
+    background: white;
+    padding:10px;
+    overflow-y: scroll;
+    margin-bottom:  20px;
+}
+
+
+.review-section .review-book .line
+{
+   border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.review-form
+{
+    margin-top: 15px;
+    padding:10px 20px;
+}
+
+.review-section .review-book .line:last-child
+{
+    border-bottom: none;
+}
+
+.review-section .review-text{
+    font-size: 16px;
+    color:#333;
+    padding:10px 10px 0 10px;
+}
+
+.review-section .review-reply{
+    font-size: 16px;
+    background: #F5F5F5;
+    padding:14px 16px;
+    margin-bottom:15px;
+}
+.review-section .review-footer{
+    color: #A0A0A0;
+    font-size: 0.8em;
+}
+
+.review-input, .review-textarea
+{
+    margin-top: 20px;
+    border:1px solid white;
+    background: black;
+    padding:10px;
+    font-size: 16px;
+    width: 100%;
+    height: 50px;
+    color:white;
+}
+
+.review-submit-button
+{
+    border:1px solid #a24f4f;
+    background: white;
+    color: black;
+    font-size: 18px;
+    padding: 15px 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 25px;
+    font-family: Montserrat,Lato,'Helvetica Neue';
+}
+
+.review-input:focus, .review-textarea:focus
+{
+    outline:1px solid white
+}
+
+.review-section .review-form-title
+{
+    font-size:36px;
+    color:white;
+    font-family:  'Montserrat','Lato';
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.review-textarea
+{
+    height: 250px;
+}
+
+.review-thankyou
+{
+    background: url('../image/thankyou.jpg');
+    position:relative;
+    text-align: center;
+    height: 520px;
+    margin-bottom:  20px;
+    padding: 20px;
+}
+
+.thankyou-text
+{
+    z-index: 99;
+    padding-top: 200px;
+    font-size: 30px;
+    color:white;
+    height: 100%;
+    position: relative;
+    line-height: 45px;
+    letter-spacing: 1.2px;
+}
+
 .footer {
     height:60px;
     text-align: center;
@@ -261,4 +457,8 @@ body
     .home {
        background-position: 35% 20%;
     }
+}
+.in-blk
+{
+    display: inline-block;
 }

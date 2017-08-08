@@ -12,3 +12,5 @@
 */
 
 Route::get('/','HomeController@getHomePage');
+ROute::get('/fb-access-token','SocialAuthController@getFbAccessToken');
+ROute::post('/fb-feed','SocialAuthController@getFbFeed');
