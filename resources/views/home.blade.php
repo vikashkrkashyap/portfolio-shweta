@@ -239,7 +239,7 @@
                     </div>
                     <div class="review-thankyou hide">
                         <div class="thankyou-text">
-                            <div>Thankyou for writing</div>
+                            <div>Thankyou <img src="{{ url('image/icon/like.png') }}" width="24" height="24" style="margin-left: 5px" alt=""></div>
                             <div>Your review will be posted soon</div>
                         </div>
                         <div class="overlay"></div>
