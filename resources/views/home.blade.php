@@ -253,7 +253,7 @@
 </div>
     <div class="footer">
         <div class="text">
-            Copyright  &copy; 2017 | Designed by <a href="https://www.linkedin.com/in/vikashkrkashyap/" class="footer-link">Vikash Kashyap</a>
+            Copyright  &copy; 2017 | Designed by <a href="https://www.linkedin.com/in/vikashkrkashyap/" class="footer-link" target="_blank">Vikash Kashyap</a>
         </div>
     </div>
 
