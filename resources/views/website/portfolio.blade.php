@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('website.app')
 @section('content')
 <div class="category-container home" id="#home">
 
