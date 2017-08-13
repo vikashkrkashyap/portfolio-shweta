@@ -32,7 +32,12 @@ Route::group(['namespace' => 'Auth'], function(){
 
 });
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard','DashboardController@showDashboard')->name('login');
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'namespace' => 'Admin'], function(){
+    Route::get('/info', 'InfoController@showInfo')->name('dashboard.info');
+    Route::get('/info/edit', 'InfoController@editInfo')->name('dashboard.info.edit');
+    Route::post('/info', 'InfoController@updateInfo')->name('dashboard.info.update');
+
+    Route::get('/review', 'ReviewController@showReview')->name('dashboard.review');
+    Route::get('/gallery','GalleryController@showGallery')->name('dashboard.gallery');
 });
 
