@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @if (session('success'))
                             <div class="alert alert-success">
-                                {{ session('status') }}
+                                {{ session('success') }}
                             </div>
                         @endif
                         <form class="form-horizontal" method="POST" action="{{ route('dashboard.info.update') }}">

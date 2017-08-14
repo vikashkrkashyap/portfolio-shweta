@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 
-class DashboardController extends Controller
+class DashboardController extends BaseController
 {
-    public function showDashboard()
-    {
-        return redirect()->route('dashboard');
-    }
+
 }

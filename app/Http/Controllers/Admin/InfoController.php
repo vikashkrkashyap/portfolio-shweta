@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\DashboardController;
+
 class InfoController extends DashboardController
 {
     public function showInfo()

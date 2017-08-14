@@ -37,7 +37,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'namespace' => 'A
     Route::get('/info/edit', 'InfoController@editInfo')->name('dashboard.info.edit');
     Route::post('/info', 'InfoController@updateInfo')->name('dashboard.info.update');
 
-    Route::get('/review', 'ReviewController@showReview')->name('dashboard.review');
     Route::get('/gallery','GalleryController@showGallery')->name('dashboard.gallery');
+    Route::get('/gallery/create','GalleryController@createGallery')->name('dashboard.gallery.create');
+    Route::post('/gallery/create','GalleryController@saveGallery')->name('dashboard.gallery.save');
+    Route::get('gallery/{id}/details','GalleryController@galleryDetails')->name('dashboard.gallery.details');
+    Route::post('gallery/{id}/upload','GalleryController@uploadImages')->name('dashboard.gallery.uploads');
+    Route::post('gallery/{id}/status','GalleryController@setGalleryStatus')->name('dashboard.gallery.status');
+    Route::get('image/delete/{id}', 'GalleryController@deleteImage')->name('dashboard.image.delete');
+    Route::get('image/cover/{id}','GalleryController@makeProfilePicture')->name('dashboard.image.cover');
+
+    Route::get('/review', 'ReviewController@showReview')->name('dashboard.review');
 });
 
