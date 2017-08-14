@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BaseController extends Controller
 {
@@ -22,5 +23,19 @@ class BaseController extends Controller
         }
 
         return $galleries->get();
+    }
+
+    public function getImage($title, $image)
+    {
+        $path = storage_path('gallery').'/'.$title.'/'. $image;
+        if (file_exists($path)) {
+
+            $file = File::get($path);
+            $type = File::mimeType($path);
+
+            $response = response()->make($file, 200);
+            $response->header("Content-Type", $type);
+            return $response;
+        }
     }
 }

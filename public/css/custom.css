@@ -13,6 +13,11 @@
 .in-blk{
     display: inline-block;
 }
+
+.mar-t-20{
+    margin-top: 20px;
+}
+
 .pad-20{
     padding: 20px;
 }
@@ -48,9 +53,9 @@
 }
 
 .gallery-bottom .status-live{
-    color:darkred;
+    color:green;
 }
 
 .gallery-bottom .status-non-live{
-    color:darkgreen;
+    color:red;
 }

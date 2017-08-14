@@ -19,7 +19,7 @@
                                    @foreach($galleries as $gallery)
                                      <div class="col-md-4">
                                          <div class="gallery-wrapper">
-                                             <a href="{{ route('dashboard.gallery.details', $gallery->id) }}"><img src="{{ url('image/logo.png') }}" title="{{ $gallery->title }}"></a>
+                                             <a href="{{ route('dashboard.gallery.details', $gallery->id) }}"><img src="{{ $gallery->getCoverImage() }}" title="{{ $gallery->title }}"></a>
                                              <div class="gallery-bottom">
                                                  <div class="title">{{ str_limit($gallery->title, 15)  }} </div>
                                                  <div class="status @if($gallery->is_live) status-live @else status-non-live @endif">

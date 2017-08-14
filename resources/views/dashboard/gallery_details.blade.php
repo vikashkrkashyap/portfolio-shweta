@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <a href="{{ route('dashboard.gallery') }}" class="mar-b-10"><<< Go back </a>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="pull-left">Gallery Details</div>
@@ -19,11 +20,11 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">
-                        <div class="col-md-4">
-                            <div>
-                                <img src="{{ url('image/logo.png') }}" alt="" height="250" width="100%">
-                            </div>
-                        </div>
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @elseif(session('errorMessage'))
+                            <div class="alert alert-danger">{{ session('errorMessage') }}</div>
+                        @endif
                         <div class="col-md-4">
                             <ul class="list-unstyled">
                                 <li><b>Title :</b> {{ $gallery->title }}</li>
@@ -32,7 +33,7 @@
                             </ul>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 mar-t-20">
                             <div class="alert alert-info pad-20">
                                 <form action="{{ route('dashboard.gallery.uploads', $gallery->id) }}" enctype="multipart/form-data" method="post">
                                     @if($errors->has('image'))
@@ -40,6 +41,11 @@
                                             {{ $errors->first('image') }}
                                         </div>
                                     @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
                                     <div class="in-blk mar-b-10">
                                         <input type="file" name="images[]" multiple="true">
                                     </div>
@@ -52,23 +58,29 @@
                         </div>
                         <div class="col-md-12">
                             <div>
+
                                 @if($gallery->images->count())
                                     @foreach($gallery->images as $image)
                                         <div class="col-md-4">
                                             <div class="gallery-wrapper">
-                                                <a href=""><img src="{{ url('image/logo.png') }}" title="{{ $image->title }}"></a>
+                                                <a href="{{ $image->getImagePath() }}" ><img src="{{ $image->getResizeImagePath() }}" title="{{ $image->title }}"></a>
                                                 <div class="gallery-bottom">
                                                     <div class="text-center">
                                                         <div class="in-blk mar-b-10">
-                                                            <a href="{{ route('dashboard.image.cover', $image->id) }}" class="btn btn-xs btn-warning">
-                                                                Set Profile Pic
-                                                            </a>
+                                                            @if($image->is_cover)
+                                                                <div class="btn btn-success btn-xs" disabled="">Profile Picture</div>
+                                                            @else
+                                                                <a onclick="return confirm('Are you sure ?')" href="{{ route('dashboard.image.cover', $image->id) }}" class="btn btn-xs btn-warning">
+                                                                    Set Profile Pic
+                                                                </a>
+                                                            @endif
                                                         </div>
                                                         <div class="in-blk">
-                                                            <a href="{{ route('dashboard.image.delete', $image->id) }}" class="btn btn-xs btn-danger mar-l-10">
+                                                            <a onclick="return confirm('Are you sure ?')" href="{{ route('dashboard.image.delete', $image->id) }}" class="btn btn-xs btn-danger mar-l-10">
                                                                 Delete
                                                             </a>
                                                         </div>
+                                                        <div class="clearfix"></div>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </div>
