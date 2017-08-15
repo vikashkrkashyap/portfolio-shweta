@@ -12,7 +12,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="POST" action="{{ route('dashboard.gallery.save') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('dashboard.gallery.update', $gallery->id) }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -40,18 +40,17 @@
                             <div class="form-group{{ $errors->has('taken_at') ? ' has-error' : '' }}">
                                 <label for="taken_at" class="col-md-2 control-label">Taken At</label>
                                 <div class="col-md-8">
-                                    <input type="date" name="taken_at" id="taken_at" value="{{ old('taken_at') }}" class="form-control">
+                                    <input type="date" name="taken_at" id="taken_at" value="{{ old('taken_at') ? old('taken_at') : $gallery->taken_at ? date('Y-m-d', strtotime($gallery->taken_at)) :"" }}" class="form-control">
                                     @if ($errors->has('taken_at'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('taken_at') }}</strong>
-                                    </span>
+                                        <strong>{{ $errors->first('taken_at') }}</strong></span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="col-md-10">
                                 <div class="text-center">
-                                    <a href="{{ route('dashboard.gallery') }}" class="btn btn-danger mar-r-10">Cancel</a>
+                                    <a href="{{ route('dashboard.gallery.details', $gallery->id) }}" class="btn btn-danger mar-r-10">Cancel</a>
                                     <button type="submit" class="btn btn-success">Save Gallery</button>
                                 </div>
                             </div>

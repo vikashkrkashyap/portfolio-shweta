@@ -22,7 +22,13 @@ class Gallery extends Model
             ->orderBy('updated_at','DESC')
             ->first();
 
-        return route('accessImage', [$this->title, 'resize-'.$coverImage->url]);
+        if($coverImage) {
+
+            return route('accessImage', [$this->folder_title, 'resize-'.$coverImage->url]);
+        }
+        else{
+            return url('image/default.png');
+        }
     }
 }
 

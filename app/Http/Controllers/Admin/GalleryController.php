@@ -36,8 +36,9 @@ class GalleryController extends DashboardController
 
         Gallery::create([
             'title' => $request->input('title'),
+            'folder_title' => strtolower(str_slug($request->input('title'))),
             'priority' => $request->input('priority'),
-            'taken_at' => $request->input('date') ? $request->input('date') :null
+            'taken_at' => $request->input('taken_at') ? date('Y-m-d H:i:s', strtotime($request->input('taken_at'))) :null
         ]);
 
         return redirect()->route('dashboard.gallery')
@@ -64,7 +65,7 @@ class GalleryController extends DashboardController
         $gallery->update([
             'title' => $request->input('title'),
             'priority' => $request->input('priority'),
-            'taken_at' => $request->input('date') ? $request->input('date') :null
+            'taken_at' => $request->input('taken_at') ? date('Y-m-d H:i:s', strtotime($request->input('taken_at'))) :null
         ]);
 
         return redirect()->route('dashboard.gallery.details', $galleryId)
@@ -176,6 +177,19 @@ class GalleryController extends DashboardController
         }else {
             return redirect()->back()->with('errorMessage', 'Couldn\'t make gallery visible, please try again');
         }
+    }
+
+    public function deleteGallery($galleryId)
+    {
+        $gallery = Gallery::findOrFail($galleryId);
+
+        File::deleteDirectory($this->imagePath.'/'.$gallery->folder_title.'/');
+
+        // delete images from database
+        Images::where('gallery_id', $galleryId)->delete();
+        $gallery->delete();
+
+        return redirect()->route('dashboard.gallery')->with('success', 'Gallery deleted successfully');
     }
 
 }

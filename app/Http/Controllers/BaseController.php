@@ -19,7 +19,7 @@ class BaseController extends Controller
         $galleries =  Gallery::orderBy('priority','ASC')
             ->orderBy('updated_at','DESC');
         if($checkLive){
-            $galleries =$galleries->where('is_live', 1);
+            $galleries =$galleries->where('is_live', 1)->take(3);
         }
 
         return $galleries->get();

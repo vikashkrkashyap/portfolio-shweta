@@ -9,10 +9,11 @@ class PortfolioController extends BaseController
     public function getMainPage()
     {
         $userInfo = $this->getUserInfo();
-
+        $galleries = $this->getGalleries(true);
 
         $data = [
-            'userInfo' => $userInfo
+            'userInfo' => $userInfo,
+            'galleries' => $galleries
         ];
 
         return view('website.portfolio')->with($data);

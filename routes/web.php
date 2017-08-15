@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'namespace' => 'A
     Route::get('/gallery','GalleryController@showGallery')->name('dashboard.gallery');
     Route::get('/gallery/create','GalleryController@createGallery')->name('dashboard.gallery.create');
     Route::post('/gallery/create','GalleryController@saveGallery')->name('dashboard.gallery.save');
+    Route::get('/gallery/{id}/delete','GalleryController@deleteGallery')->name('dashboard.gallery.delete');
 
     Route::get('/gallery/{id}/edit','GalleryController@editGallery')->name('dashboard.gallery.edit');
     Route::post('/gallery/{id}/update','GalleryController@updateGallery')->name('dashboard.gallery.update');

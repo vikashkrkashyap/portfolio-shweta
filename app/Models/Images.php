@@ -16,19 +16,19 @@ class Images extends Model
 
     public function getResizeImagePath()
     {
-        return route('accessImage', [$this->gallery->title, 'resize-'.$this->url]);
+        return route('accessImage', [$this->gallery->folder_title, 'resize-'.$this->url]);
     }
 
     public function getImagePath()
     {
-        return route('accessImage', [$this->gallery->title, $this->url]);
+        return route('accessImage', [$this->gallery->folder_title, $this->url]);
     }
 
     public function getFilePaths()
     {
         return [
-            storage_path('gallery').'/'.$this->gallery->title.'/'.$this->url,
-            storage_path('gallery').'/'.$this->gallery->title.'/'.'resize-'.$this->url
+            storage_path('gallery').'/'.$this->gallery->folder_title.'/'.$this->url,
+            storage_path('gallery').'/'.$this->gallery->folder_title.'/'.'resize-'.$this->url
         ];
     }
 }

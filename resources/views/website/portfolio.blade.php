@@ -29,42 +29,28 @@
     </div>
     <div class="section-body">
         <div class="col-md-10 col-md-offset-1 col-sm-offset-0 col-sm-12">
-            <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
-                <div class="gallery-sub-section">
-                    <div class="gallery">
-                        <a href="{{ url('image/sa_gallery.jpg') }}" class="hide"></a>
-                        <a href="{{ url('image/sa_cover.jpg') }}">
-                            <img  src="{{ url('image/sa_cover.jpg')  }}">
-                        </a>
-                        <a href="{{ url('image/sa_gallery_2.jpg') }}" class="hide"></a>
+                    @foreach($galleries as $gallery)
+                <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                    <div class="gallery-sub-section">
+                        @if($gallery->images->count())
+                        <div class="gallery">
+                            @foreach($gallery->images as $image)
+                                @if($loop->first)
+                                    <a href="{{ $image->getImagePath() }}">
+                                        <img src="{{ $image->getResizeImagePath() }}" alt="{{ $image->name }}">
+                                    </a>
+                                @else
+                                 <a href="{{ $image->getImagePath() }}" class="hide"></a>
+                                @endif
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
-                <div class="gallery-sub-section">
-                    <div class="gallery">
-                        <a href="{{ url('image/sa_gallery.jpg') }}" class="hide"></a>
-                        <a href="{{ url('image/sa_gallery_2.jpg') }}">
-                            <img  src="{{ url('image/sa_gallery_2.jpg')  }}">
-                        </a>
-                        <a href="{{ url('image/sa_gallery_2.jpg') }}" class="hide"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
-                <div class="gallery-sub-section">
-                    <div class="gallery">
-                        <a href="{{ url('image/sa_gallery.jpg') }}">
-                            <img class="" src="{{ url('image/sa_gallery.jpg')  }}">
-                        </a>
-                        <a href="{{ url('image/sa_gallery_2.jpg') }}" class="hide"></a>
-                        <a href="{{ url('image/sa_gallery_2.jpg') }}" class="hide"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
+                    @endforeach
         </div>
+        <div class="clearfix"></div>
+
         <div class="clearfix"></div>
     </div>
 </div>

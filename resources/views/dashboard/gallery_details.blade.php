@@ -9,13 +9,13 @@
                     <div class="panel-heading">
                         <div class="pull-left">Gallery Details</div>
                         <div class="pull-right">
-                            <a href="" class="btn btn-sm btn-primary">Edit Gallery</a>
+                            <a href="{{ route('dashboard.gallery.edit', $gallery->id) }}" class="btn btn-sm btn-primary">Edit Gallery</a>
                             @if($gallery->is_live)
-                                <a href="{{ route('dashboard.gallery.status', $gallery->id) }}" class="btn btn-sm btn-danger mar-l-10">Make Inactive</a>
+                                <a href="{{ route('dashboard.gallery.status', $gallery->id) }}" class="btn btn-sm btn-warning mar-l-10">Make Inactive</a>
                             @else
                                 <a href="{{ route('dashboard.gallery.status', $gallery->id) }}" class="btn btn-sm btn-success mar-l-10">Make Active</a>
                             @endif
-                            <a href=""></a>
+                            <a href="{{ route('dashboard.gallery.delete', $gallery->id) }}" onclick="return confirm('Are you sure ?, all images and gallery will be deleted')" class="btn btn-sm btn-danger mar-l-10">Delete Gallery</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
