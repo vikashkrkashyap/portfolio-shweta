@@ -160,7 +160,7 @@
                             </div>
                             @endforeach
                         @else
-                            <div  style="padding: 10px; color: white">
+                            <div  style="padding: 10px; background: tomato; color:white; margin-top: 10px">
                                 No review published yet, Be the first to give a review.
                             </div>
                         @endif
