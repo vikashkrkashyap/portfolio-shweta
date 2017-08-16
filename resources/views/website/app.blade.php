@@ -8,7 +8,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
     @section('page-title')
-    <title>Shweta Akki | Portfolio</title>
+    <title>Shweta Akki</title>
     @show
 
     <!-- Styles -->

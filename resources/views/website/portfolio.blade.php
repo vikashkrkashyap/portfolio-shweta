@@ -160,7 +160,7 @@
                             </div>
                             @endforeach
                         @else
-                            <div class="alert-danger pad-10">
+                            <div  style="padding: 10px; color: white">
                                 No review published yet, Be the first to give a review.
                             </div>
                         @endif
