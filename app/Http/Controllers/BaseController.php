@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\Review;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -23,6 +24,26 @@ class BaseController extends Controller
         }
 
         return $galleries->get();
+    }
+
+    public function getReviews($checkApproved = false, $lowerLimit = null, $upperLimit =null)
+    {
+        $review =  Review::orderBy('is_pinned', 'DESC')
+            ->orderBy('updated_at','DESC');
+
+        if($lowerLimit && $upperLimit) {
+            $review = $review->skip($lowerLimit)
+                ->take($upperLimit);
+        }
+
+        if($checkApproved) {
+            $review = $review->where('is_approved',1);
+        }
+        else {
+            return $review->paginate(10);
+        }
+
+        return $review->get();
     }
 
     public function getImage($title, $image)

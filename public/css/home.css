@@ -477,3 +477,14 @@ body
 {
     display: inline-block;
 }
+
+.review-error{
+    font-size: 13px;
+    color: white;
+    padding: 3px 0 0 5px;
+    margin-bottom: -15px;
+}
+
+.bg-red{
+    background-color: #925151;
+}

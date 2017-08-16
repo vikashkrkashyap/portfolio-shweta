@@ -207,12 +207,14 @@
                     </div>
                 </div>
                 <div class="col-sm-5 col-lg-5 col-sm-5 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-1">
-                    <div class="review-form">
+                    <div class="review-form" data-url = {{ route('review.submit') }}>
                         <div class="review-form-title">
                             Show some <img src="{{ url('image/icon/like.png') }}" alt="" height="40" width="40">
                         </div>
-                        <input type="text" class="review-input" placeholder="Your name">
-                        <textarea class="review-textarea" placeholder="Your message"></textarea>
+                        <input type="text" class="review-input" id="reviewName" placeholder="Your name" required>
+                        <div class="r-n-error review-error hide"></div>
+                        <textarea class="review-textarea" placeholder="Your message" id="reviewMessage" required></textarea>
+                        <div class="r-m-error review-error hide">ok</div>
                         <button class="review-submit-button">
                             Submit Review
                         </button>
@@ -254,10 +256,47 @@
                 });
             });
 
-            $('.review-submit-button').click(function(){
-                $('.review-form').addClass('hide');
-                $('.review-thankyou').removeClass('hide')
-            })
+            // making request for submit the review
+
+            $('.review-submit-button').click(function(e){
+                e.preventDefault();
+                $(this).text('Submitting ...').css('opacity', 0.9).prop("disabled",true);
+
+                var url = $('.review-form').data('url');
+                var name = $('#reviewName').val();
+                var message = $('#reviewMessage').val();
+
+                $.ajax({
+                    url : url,
+                    type : 'POST',
+                    dataType : 'JSON',
+                    data : {'name' :name, 'message' : message, '_token': "{{ csrf_token() }}"},
+                    success : function (data){
+                        if(data.success) {
+                            $('.review-submit-button').text('Submit Review').css('opacity', 1).prop("disabled",false);
+                            $('.review-form').addClass('hide');
+                            $('.review-thankyou').removeClass('hide')
+                        }
+                        else if(data.error){
+                            $('.review-submit-button').text('Submit Review').css('opacity', 1).prop("disabled",false);
+                            if(data.error.message){
+                                $('#reviewName').addClass('bg-red');
+                                $('.r-m-error').removeClass('hide').text(data.error.message[0]);
+                            }
+                            if(data.error.name){
+                                $('.r-n-error').removeClass('hide').text(data.error.name[0]);
+                                $('#reviewMessage').addClass('bg-red');
+                            }
+                        }
+                        else {
+                            console.error('Some error occurred at the time of submitting the form, please send email to vikashkrkashyap@gmail.com if this error persists');
+                        }
+                    },
+                    fails : function (){
+                        console.error('Failed to submit the review, please send email to vikashkrkashyap@gmail.com if this error persists');
+                    }
+                })
+            });
         });
 
     </script>

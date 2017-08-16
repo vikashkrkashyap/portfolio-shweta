@@ -52,7 +52,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'namespace' => 'A
     Route::get('image/delete/{id}', 'GalleryController@deleteImage')->name('dashboard.image.delete');
     Route::get('image/cover/{id}','GalleryController@makeProfilePicture')->name('dashboard.image.cover');
 
+    Route::post('/review/submit','ReviewController@saveReview')->name('review.submit');
     Route::get('/review', 'ReviewController@showReview')->name('dashboard.review');
+    Route::get('/review/{id}/status', 'ReviewController@setStatus')->name('dashboard.review.status');
+    Route::get('/review/{id}/pinned', 'ReviewController@pinReview')->name('dashboard.review.pinned');
+    Route::post('/review/{id}/reply', 'ReviewController@reviewReply')->name('dashboard.review.reply');
+
+
 });
 
 // get image file
