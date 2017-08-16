@@ -130,80 +130,40 @@
             <div class="col-sm-12 col-lg-10 col-xs-12 col-md-10 col-lg-offset-1 col-sm-offset-0 col-md-offset-1">
                 <div class="col-sm-5 col-lg-5 col-sm-5 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-1">
                     <div class="review-book">
-                        <div class="line">
-                            <div class="review-text">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
-                            </div>
-                            <div class="review-footer pull-right">
-                                <span> - Vikash Kashyap</span> | 27 oct 2017, 10:15 AM
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="in-blk" style="margin-left:10px; vertical-align: top;">
-                                <img src="{{ url('image/icon/reply.png') }}" alt="">
-                            </div>
-                            <div class="in-blk" style="margin-top: 5px; width: 85%; margin-left: 5px">
-                                <div class="review-reply">
-                                    Thankyou so much for that. Its really awesome.Thankyou so much for that. Its really awesome.
-
-                                    Thankyou so much for that. Its really awesome.
-
-                                    <div style="font-size: 14px; margin-top: 5px; color: #333; text-align: right ">
-                                        - 27 oct 2017 10:15 AM
-                                    </div>
-                                    <div class="clearfix"></div>
+                        @if($reviews->count())
+                            @foreach($reviews as $review)
+                            <div class="line">
+                                <div class="review-text-left">
+                                    {{ $loop->iteration }}
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="line">
-                            <div class="review-text">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
-                            </div>
-                            <div class="review-footer pull-right">
-                                <span> - Vikash Kashyap</span> | 27 oct 2017, 10:15 AM
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="in-blk" style="margin-left:10px; vertical-align: top;">
-                                <img src="{{ url('image/icon/reply.png') }}" alt="">
-                            </div>
-                            <div class="in-blk" style="margin-top: 5px; width: 85%; margin-left: 5px">
-                                <div class="review-reply">
-                                    Thankyou so much for that. Its really awesome.Thankyou so much for that. Its really awesome.
-
-                                    Thankyou so much for that. Its really awesome.
-
-                                    <div style="font-size: 14px; margin-top: 5px; color: #333; text-align: right ">
-                                        - 27 oct 2017 10:15 AM
-                                    </div>
-                                    <div class="clearfix"></div>
+                                <div class="review-text">
+                                    {!! $review->review !!}
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="line">
-                            <div class="review-text">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
-                            </div>
-                            <div class="review-footer pull-right">
-                                <span> - Vikash Kashyap</span> | 27 oct 2017, 10:15 AM
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="in-blk" style="margin-left:10px; vertical-align: top;">
-                                <img src="{{ url('image/icon/reply.png') }}" alt="">
-                            </div>
-                            <div class="in-blk" style="margin-top: 5px; width: 85%; margin-left: 5px">
-                                <div class="review-reply">
-                                    Thankyou so much for that. Its really awesome.Thankyou so much for that. Its really awesome.
-
-                                    Thankyou so much for that. Its really awesome.
-
-                                    <div style="font-size: 14px; margin-top: 5px; color: #333; text-align: right ">
-                                        - 27 oct 2017 10:15 AM
-                                    </div>
-                                    <div class="clearfix"></div>
+                                <div class="review-footer pull-right">
+                                    <span> - {{ ucfirst($review->name) }}</span> | {{ date('d M Y, H:i A', strtotime($review->reviewed_at)) }}
                                 </div>
+                                <div class="clearfix"></div>
+                                <div class="in-blk" style="margin-left:10px; vertical-align: top;">
+                                    <img src="{{ url('image/icon/reply.png') }}" alt="">
+                                </div>
+                                @if($review->reply)
+                                <div class="in-blk" style="margin-top: 5px; width: 85%; margin-left: 5px">
+                                    <div class="review-reply">
+                                        {!! $review->reply !!}
+                                        <div style="font-size: 14px; margin-top: 5px; color: #333; text-align: right ">
+                                            {{ date('d M Y, H:i s', strtotime($review->replied_at)) }}
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <div class="alert-danger pad-10">
+                                No review published yet, Be the first to give a review.
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-5 col-lg-5 col-sm-5 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-1">
@@ -280,12 +240,12 @@
                         else if(data.error){
                             $('.review-submit-button').text('Submit Review').css('opacity', 1).prop("disabled",false);
                             if(data.error.message){
-                                $('#reviewName').addClass('bg-red');
+                                $('#reviewMessage').addClass('bg-red');
                                 $('.r-m-error').removeClass('hide').text(data.error.message[0]);
                             }
                             if(data.error.name){
                                 $('.r-n-error').removeClass('hide').text(data.error.name[0]);
-                                $('#reviewMessage').addClass('bg-red');
+                                $('#reviewName').addClass('bg-red');
                             }
                         }
                         else {

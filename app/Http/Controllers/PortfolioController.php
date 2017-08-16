@@ -11,12 +11,24 @@ class PortfolioController extends BaseController
     {
         $userInfo = $this->getUserInfo();
         $galleries = $this->getGalleries(true);
+        $reviews = $this->getReviews(true);
 
         $data = [
             'userInfo' => $userInfo,
-            'galleries' => $galleries
+            'galleries' => $galleries,
+            'reviews'  => $reviews
         ];
 
         return view('website.portfolio')->with($data);
+    }
+
+    public function showReview()
+    {
+        $reviews = $this->getReviews(true);
+
+        return response()->json([
+            'success' => true,
+            'reviews' => $reviews
+        ]);
     }
 }

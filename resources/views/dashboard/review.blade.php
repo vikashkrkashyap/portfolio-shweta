@@ -127,13 +127,13 @@
                 }
 
                 $.ajax({
-                    url :url,
+                    url: url,
                     type: 'POST',
-                    dataType : 'JOSN',
-                    data : {reply : reply , _token : "{{ csrf_token() }}"},
-                    success : function(data){
+                    dataType: 'JSON',
+                    data: {reply : reply , _token : "{{ csrf_token() }}"},
+                    success: function(data){
                         if(data.success){
-                            location.reload();
+                            window.location.reload();
                             $('#successMsg').removeClass('hide').text('You reply has been applied successfully');
                         }
                         else if(data.error){
@@ -143,7 +143,7 @@
                             $('#modalReviewReply').modal('hide');
                         }
                     },
-                    fail : function(){
+                    fail: function(){
                         errorMsg.removeClass('hide').text('Some error occurred, Try again and if error persists, then contact developer.')
                     }
                 })
