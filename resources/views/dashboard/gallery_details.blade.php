@@ -36,7 +36,8 @@
                         <div class="col-md-10 mar-t-20">
                             <div class="alert alert-info pad-20">
                                 <form action="{{ route('dashboard.gallery.uploads', $gallery->id) }}" enctype="multipart/form-data" method="post">
-                                    @if($errors->has('image'))
+                                    {!! csrf_field() !!}
+                                @if($errors->has('image'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('image') }}
                                         </div>

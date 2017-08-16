@@ -151,7 +151,7 @@
                                     <div class="review-reply">
                                         {!! $review->reply !!}
                                         <div style="font-size: 14px; margin-top: 5px; color: #333; text-align: right ">
-                                            {{ date('d M Y, H:i s', strtotime($review->replied_at)) }}
+                                            {{ date('d M Y, H:i A', strtotime($review->replied_at)) }}
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
